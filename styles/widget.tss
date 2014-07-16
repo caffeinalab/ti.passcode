@@ -1,0 +1,59 @@
+"#mask":{
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL,
+	backgroundColor: '#D000'
+},
+"#inset":{
+	width: 270,
+	height: 500,
+},
+"#lbl":{
+	top: 20,
+	color: '#fff',
+	font:{
+		fontFamily: 'HelveticaNeue',
+		fontSize: 17.5
+	}
+},
+"#oks":{
+	top: 48,
+	height: 40
+},
+".btn":{
+	width: 75,
+	height: 75,
+	borderRadius: 37.5,
+	borderColor: "#AFFF",
+	borderWidth: 1,
+},
+".btn_lbl":{
+	touchEnabled: false,
+	color: "#fff",
+	top: 8,
+	textAlign: 'center',
+	font:{
+		fontFamily: 'HelveticaNeue-Thin',
+		fontSize: 36
+	}
+},
+".btn_w":{
+	touchEnabled: false,
+	color: "#fff",
+	bottom: 15,
+	textAlign: 'center',
+	font:{
+		fontFamily: 'HelveticaNeue-Light',
+		fontSize: 8.5
+	}
+},
+
+"#btn_1":{ top: 120, left: 0 },
+"#btn_2":{ top: 120 },
+"#btn_3":{ top: 120, right: 0 },
+"#btn_4":{ top: 210, left: 0 },
+"#btn_5":{ top: 210, },
+"#btn_6":{ top: 210, right: 0 },
+"#btn_7":{ top: 300, left: 0 },
+"#btn_8":{ top: 300, },
+"#btn_9":{ top: 300, right: 0 },
+"#btn_0":{ top: 390 },

@@ -1,0 +1,18 @@
+<Alloy>
+	<View id="mask">
+		<View id="inset">
+			<Label id="lbl" text="Insert code" />
+			<View id="oks" />
+			<View id="btn_1" class="btn" n="1"><Label class="btn_lbl" text="1" /><Label class="btn_w" text="" /></View>
+			<View id="btn_2" class="btn" n="2"><Label class="btn_lbl" text="2" /><Label class="btn_w" text="A B C" /></View>
+			<View id="btn_3" class="btn" n="3"><Label class="btn_lbl" text="3" /><Label class="btn_w" text="D E F" /></View>
+			<View id="btn_4" class="btn" n="4"><Label class="btn_lbl" text="4" /><Label class="btn_w" text="G H I" /></View>
+			<View id="btn_5" class="btn" n="5"><Label class="btn_lbl" text="5" /><Label class="btn_w" text="J K L" /></View>
+			<View id="btn_6" class="btn" n="6"><Label class="btn_lbl" text="6" /><Label class="btn_w" text="M N O" /></View>
+			<View id="btn_7" class="btn" n="7"><Label class="btn_lbl" text="7" /><Label class="btn_w" text="P Q R S" /></View>
+			<View id="btn_8" class="btn" n="8"><Label class="btn_lbl" text="8" /><Label class="btn_w" text="T U V" /></View>
+			<View id="btn_9" class="btn" n="9"><Label class="btn_lbl" text="9" /><Label class="btn_w" text="W X Y Z" /></View>
+			<View id="btn_0" class="btn" n="0"><Label class="btn_lbl" text="0" top="14" /><Label class="btn_w" text="" /></View>
+		</View>
+	</View>
+</Alloy>
