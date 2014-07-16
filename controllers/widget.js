@@ -41,9 +41,7 @@ function setOnErrorCallback(callback) {
 
 function reset(animate) {
 	cc = [];
-	_.each($.oks.children, function(c){
-		c.backgroundColor = "transparent";
-	});
+	_.each($.oks.children, function($c){ $c.backgroundColor = "transparent"; });
 
 	if (animate) {
 		var m = Ti.UI.create2DMatrix();

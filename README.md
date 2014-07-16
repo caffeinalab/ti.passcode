@@ -3,7 +3,7 @@ com.caffeinalab.titanium.passcode
 
 Alloy Titanium widget for an **identical** iPhone lock screen with passcode.
 
-![image](http://cl.ly/image/1z1M0K1K3d0B/out.png)
+![image](http://cl.ly/image/36262Q3v2X39/lalaal.gif)
 
 ## Installation
 
