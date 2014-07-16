@@ -26,7 +26,7 @@ function setCode(c) {
 			borderColor: "#AFFF",
 			borderWidth: 1,
 			borderRadius: 5,
-			center: { y: "50%", x: INSET_OKS_MARGIN+(i*gap) }
+			center: { y: "50%", x: INSET_OKS_MARGIN+(i*gap)+5 }
 		}));
 	}
 }
@@ -66,12 +66,13 @@ function validate() {
 function process() {
 	if (validate()) {
 		reset(false);
-
+		errtimes = 0;
 		if (_.isFunction(onSuccess)) onSuccess();
-		else Ti.API.warn("com.caffeinalab.titanium.passcode: User entered valid code but no 'onSuccess' callback has been defined");
+		else {
+			Ti.API.warn("com.caffeinalab.titanium.passcode: User entered valid code but no 'onSuccess' callback has been defined");
+		}
 	} else {
 		reset(true);
-
 		errtimes++;
 		if (_.isFunction(onError)) onError(errtimes);
 	}

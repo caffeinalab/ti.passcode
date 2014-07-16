@@ -3,7 +3,7 @@ com.caffeinalab.titanium.passcode
 
 Alloy Titanium widget for an **identical** iPhone lock screen with passcode.
 
-![image](http://cl.ly/image/1m0n031m111A/Screenshot%202014.07.16%2017.51.37.png)
+![image](http://cl.ly/image/1z1M0K1K3d0B/out.png)
 
 ## Installation
 
@@ -32,7 +32,7 @@ And add in your *config.json*, under `dependencies`:
 In your Alloy view:
 
 ```xml
-<Widget id="PassCodeWidget" src="com.caffeinalab.titanium.passcode" code="1234" />
+<Widget id="PassCodeWidget" src="com.caffeinalab.titanium.passcode" code="42424" />
 ```
 
 In your controller:
