@@ -13,6 +13,7 @@
 			<View id="btn_8" class="btn" n="8"><Label class="btn_lbl" text="8" /><Label class="btn_w" text="T U V" /></View>
 			<View id="btn_9" class="btn" n="9"><Label class="btn_lbl" text="9" /><Label class="btn_w" text="W X Y Z" /></View>
 			<View id="btn_0" class="btn" n="0"><Label class="btn_lbl" text="0" top="14" /><Label class="btn_w" text="" /></View>
+			<Button title="Delete" id="dlBtn" />
 		</View>
 	</View>
 </Alloy>

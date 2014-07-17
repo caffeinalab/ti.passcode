@@ -76,6 +76,13 @@ function process() {
 	}
 }
 
+$.dlBtn.addEventListener('touchstart', function(){
+	if (cc.length>0) {
+		$.oks.children[cc.length-1].backgroundColor = "transparent";
+		cc.pop();
+	}
+});
+
 $.mask.addEventListener('touchstart', function(e){
 	if (e.source.n===undefined) return;
 	e.source.backgroundColor = "#AFFF";

@@ -46,6 +46,15 @@
 		fontSize: 8.5
 	}
 },
+"#dlBtn":{
+	right: 0,
+	width: 75,
+	top: 430,
+	font:{
+		fontFamily: 'HelveticaNeue-Light',
+		fontSize: 14
+	}
+}
 
 "#btn_1":{ top: 120, left: 0 },
 "#btn_2":{ top: 120 },
