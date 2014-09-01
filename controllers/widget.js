@@ -1,6 +1,9 @@
 var args = arguments[0] || {};
 
 var code = null;
+var codeLength = null;
+var newCodeMode = null;
+
 var onSuccess = null;
 var onError = null;
 
@@ -12,14 +15,48 @@ var ERR_WIDTH = 30;
 var ERR_TIME = 90;
 
 function setCode(c) {
+	newCodeMode = false;
 	code = c.split('');
+	codeLength = c.length;
+}
+
+function setNewCodeMode(l) {
+	newCodeMode = true;
+	code = null;
+	codeLength = l || 4;
+}
+
+function validate() {
+	for (var i=0; i<cc.length; i++) {
+		if (cc[i]!=code[i]) return false;
+	}
+	return true;
+}
+
+function process() {
+	console.log("PROCESSING");
+	if ( ! newCodeMode) {
+		if (validate()) {
+			errtimes = 0;
+			if (_.isFunction(onSuccess)) onSuccess();
+		} else {
+			UI_reset(true);
+			errtimes++;
+			if (_.isFunction(onError)) onError(errtimes);
+		}
+	} else {
+		if (_.isFunction(onSuccess)) onSuccess(cc.join(''));
+	}
+}
+
+function UI_setCodeLength() {
 	_.each($.oks.children || [], function($c) { $.oks.remove($c); });
 
-	var INSET_OKS_MARGIN = Math.min(260, 90-20*Math.floor(code.length/5));
+	var INSET_OKS_MARGIN = Math.min(260, 90-20*Math.floor(codeLength/5));
 	var INSET_OKS_WIDTH = 260 - (INSET_OKS_MARGIN*2);
-	var gap = INSET_OKS_WIDTH/(code.length-1);
+	var gap = INSET_OKS_WIDTH/(codeLength-1);
 
-	for (var i=0; i<code.length; i++) {
+	for (var i=0; i<codeLength; i++) {
 		$.oks.add(Ti.UI.createView({
 			width: 10,
 			height: 10,
@@ -31,15 +68,8 @@ function setCode(c) {
 	}
 }
 
-function setOnSuccessCallback(callback) {
-	onSuccess = callback;
-}
 
-function setOnErrorCallback(callback) {
-	onError = callback;
-}
-
-function reset(animate) {
+function UI_reset(animate) {
 	cc = [];
 	_.each($.oks.children, function($c){ $c.backgroundColor = "transparent"; });
 
@@ -54,27 +84,28 @@ function reset(animate) {
 	}
 }
 
-function validate() {
-	for (var i=0; i<cc.length; i++) {
-		if (cc[i]!=code[i]) return false;
-	}
-	return true;
-}
 
-function process() {
-	if (validate()) {
-		reset(false);
-		errtimes = 0;
-		if (_.isFunction(onSuccess)) onSuccess();
-		else {
-			Ti.API.warn("com.caffeinalab.titanium.passcode: User entered valid code but no 'onSuccess' callback has been defined");
-		}
-	} else {
-		reset(true);
-		errtimes++;
-		if (_.isFunction(onError)) onError(errtimes);
-	}
-}
+/*
+Listeners
+*/
+
+$.mask.addEventListener('touchstart', function(e){
+	if (e.source.n===undefined) return;
+	e.source.backgroundColor = "#AFFF";
+
+	if (cc.length>=codeLength) return;
+	cc.push(parseInt(e.source.n,10));
+
+	$.oks.children[cc.length-1].backgroundColor = "#AFFF";
+	if (+cc.length!==+codeLength) return;
+
+	process();
+});
+
+$.mask.addEventListener('touchend', function(e){
+	if (e.source.n===undefined) return;
+	e.source.backgroundColor = "transparent";
+});
 
 $.dlBtn.addEventListener('touchstart', function(){
 	if (cc.length>0) {
@@ -83,35 +114,35 @@ $.dlBtn.addEventListener('touchstart', function(){
 	}
 });
 
-$.mask.addEventListener('touchstart', function(e){
-	if (e.source.n===undefined) return;
-	e.source.backgroundColor = "#AFFF";
-
-	cc.push(parseInt(e.source.n,10));
-	if (cc.length>code.length) return;
-
-	$.oks.children[cc.length-1].backgroundColor = "#AFFF";
-	if (cc.length!==code.length) return;
-
-	setTimeout(process, 100);
-});
-
-$.mask.addEventListener('touchend', function(e){
-	if (e.source.n===undefined) return;
-	e.source.backgroundColor = "transparent";
-});
-
-/*
-Initial
-*/
-
-setCode( args.code || '0000' );
 
 /*
 Pragma PUBLIC
 */
 
-exports.setCode = setCode;
-exports.setNext = setOnSuccessCallback;
-exports.onSuccess = setOnSuccessCallback;
-exports.onError = setOnErrorCallback;
+exports.setCode = function(c) {
+	setCode(c);
+	UI_setCodeLength();
+};
+
+exports.setNewCodeMode = function(l) {
+	setNewCodeMode(l);
+	UI_setCodeLength();
+};
+
+exports.setNext = exports.onSuccess = function setOnSuccessCallback(callback) {
+	onSuccess = callback;
+};
+
+exports.onError = function setOnErrorCallback(callback) {
+	onError = callback;
+};
+
+/*
+Initial
+*/
+
+if (args.code) {
+	exports.setCode(args.code);
+} else if (args.newCodeMode) {
+	exports.setNewCodeMode(args.newCodeMode);
+}

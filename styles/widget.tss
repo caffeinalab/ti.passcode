@@ -49,7 +49,8 @@
 "#dlBtn":{
 	right: 0,
 	width: 75,
-	top: 430,
+	top: 415,
+	color: '#fff',
 	font:{
 		fontFamily: 'HelveticaNeue-Light',
 		fontSize: 14

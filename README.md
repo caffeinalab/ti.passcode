@@ -40,13 +40,27 @@ In your controller:
 ```javascript
 
 // Set the success callback
-PassCodeWidget.onSuccess(function() {
+$.PassCodeWidget.onSuccess(function() {
 	alert("Yeah!")
 });
 
-PassCodeWidget.onError(function(times) {
+$.PassCodeWidget.onError(function(times) {
 	if (times>4) {
 		alert("Shame on you!");
 	}
 });
+```
+
+##### New Code Mode
+
+You can use the widget to prompt the user for a new code. Just call:
+
+`$.PassCodeWidget.setNewCodeMode(5);`
+
+This set a new code of `5` chars. At the end, the widget will fire the success callback:
+
+```javascript
+$.PassCodeWidget.onSuccess = function(code) {
+	console.log("The new code is"+code);
+};
 ```
