@@ -1,5 +1,6 @@
-com.caffeinalab.titanium.passcode
-====================================
+# Ti.Passcode
+
+### com.caffeinalab.titanium.passcode
 
 Alloy Titanium widget for an **identical** iPhone lock screen with passcode.
 
