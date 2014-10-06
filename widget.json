@@ -1,7 +1,7 @@
 {
 	"id": "com.caffeinalab.titanium.passcode",
-	"name": "com.caffeinalab.titanium.passcode",
-	"description" : "",
+	"name": "Ti.Passcode",
+	"description" : "Alloy+Titanium widget for an identical iPhone lock screen with passcode.",
 	"author": "Flavio De Stefano",
 	"version": "1.2",
 	"copyright":"Copyright (c) 2014",
