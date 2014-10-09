@@ -41,15 +41,15 @@ In your controller:
 ```javascript
 
 // Set the success callback
-$.PassCodeWidget.onSuccess = function() {
+$.PassCodeWidget.setOnSuccess(function() {
 	alert("Yeah!")
-};
+});
 
-$.PassCodeWidget.onError = function(times) {
+$.PassCodeWidget.setOnError(function(times) {
 	if (times > 4) {
 		alert("Shame on you!");
 	}
-};
+});
 ```
 
 ##### Prompt mode
@@ -58,9 +58,9 @@ You can use the widget to prompt the user for a new code. Just call:
 
 `
 $.PassCodeWidget.setPromptMode(5);
-$.PassCodeWidget.onPromptSuccess = function(newCode) {
+$.PassCodeWidget.setOnPromptSuccess(function(newCode) {
 	console.log("The new code is" + newCode);
-};
+});
 `
 
 This ask to the user for a new code of `5` chars.
@@ -77,17 +77,17 @@ Set the **prompt mode**, that doesn't check for a code but prompt the user to en
 
 The `length` argument represents the code length.
 
-#### `onSuccess`
+#### `setOnSuccess(cb: Function)`
 
 Define the callback to invoke when the user inserts the correct code.
 
-#### `onError`
+#### `setOnError(cb: Function)`
 
 Define the callback to invoke when the user inserts the wrong code.
 
 The first argument of the `onError` callback represents the times that the user has typed the wrong code.
 
-#### `onSuccessPrompt`
+#### `setOnSuccessPrompt(cb: Function)`
 
 Define the callback to invoke when at the end of the *prompt mode*.
 

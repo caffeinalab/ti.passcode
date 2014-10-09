@@ -3,21 +3,31 @@ var args = arguments[0] || {};
 var code = "";
 var codeLength = 0;
 var promptMode = false;
-
-exports.onSuccess = null;
-exports.onError = null;
-exports.onPromptSuccess = null;
-
 var errtimes = 0;
 var cc = [];
 
 var ERR_WIDTH = 30;
 var ERR_TIME = 90;
 
+var onSuccess = null;
+var onError = null;
+var onPromptSuccess = null;
+
+exports.setOnSuccess = function(cb) {
+	onSuccess = cb;
+};
+
+exports.setOnError = function(cb) {
+	onError = cb;
+};
+
+exports.setOnPromptSuccess = function(cb) {
+	onPromptSuccess = cb;
+};
+
 function setCode(c) {
-	if (c == null) c = "0000";
 	promptMode = false;
-	code = c.split('');
+	code = c.toString().split('');
 	codeLength = c.length;
 }
 
@@ -39,18 +49,18 @@ function validate() {
 function process() {
 	if (promptMode) {
 
-		if (validate()) {
-			errtimes = 0;
-			if (_.isFunction(exports.onSuccess)) exports.onSuccess();
-		} else {
-			UI_reset(true);
-			errtimes++;
-			if (_.isFunction(exports.onError)) exports.onError(errtimes);
-		}
+		if (_.isFunction(onPromptSuccess)) onPromptSuccess(cc.join(''));
 
 	} else {
 
-		if (_.isFunction(exports.onPromptSuccess)) exports.onPromptSuccess(cc.join(''));
+		if (validate()) {
+			errtimes = 0;
+			if (_.isFunction(onSuccess)) onSuccess();
+		} else {
+			UI_reset(true);
+			errtimes++;
+			if (_.isFunction(onError)) onError(errtimes);
+		}
 
 	}
 }
