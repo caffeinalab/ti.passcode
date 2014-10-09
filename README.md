@@ -14,13 +14,13 @@ Alloy Titanium widget for an **identical** iPhone lock screen with passcode.
 gittio install com.caffeinalab.titanium.passcode
 ```
 
-#### Via Github (Master version, unstable)
+#### Via Github
 
 ```
 git clone git@github.com:CaffeinaLab/com.caffeinalab.titanium.passcode.git app/widgets/com.caffeinalab.titanium.passcode
 ```
 
-And add in your *config.json*, under `dependencies`:
+Download the latest release, and add in your config.json, under dependencies:
 
 ```
 "dependencies": {
@@ -41,27 +41,54 @@ In your controller:
 ```javascript
 
 // Set the success callback
-$.PassCodeWidget.onSuccess(function() {
+$.PassCodeWidget.onSuccess = function() {
 	alert("Yeah!")
-});
+};
 
-$.PassCodeWidget.onError(function(times) {
-	if (times>4) {
+$.PassCodeWidget.onError = function(times) {
+	if (times > 4) {
 		alert("Shame on you!");
 	}
-});
+};
 ```
 
-##### New Code Mode
+##### Prompt mode
 
 You can use the widget to prompt the user for a new code. Just call:
 
-`$.PassCodeWidget.setNewCodeMode(5);`
-
-This set a new code of `5` chars. At the end, the widget will fire the success callback:
-
-```javascript
-$.PassCodeWidget.onSuccess = function(code) {
-	console.log("The new code is"+code);
+`
+$.PassCodeWidget.setPromptMode(5);
+$.PassCodeWidget.onPromptSuccess = function(newCode) {
+	console.log("The new code is" + newCode);
 };
-```
+`
+
+This ask to the user for a new code of `5` chars.
+
+### API
+
+#### `setCode(code: String)`
+
+Set a new code
+
+#### `setPromptMode(length: Number)`
+
+Set the **prompt mode**, that doesn't check for a code but prompt the user to enter a code.
+
+The `length` argument represents the code length.
+
+#### `onSuccess`
+
+Define the callback to invoke when the user inserts the correct code.
+
+#### `onError`
+
+Define the callback to invoke when the user inserts the wrong code.
+
+The first argument of the `onError` callback represents the times that the user has typed the wrong code.
+
+#### `onSuccessPrompt`
+
+Define the callback to invoke when at the end of the *prompt mode*.
+
+
