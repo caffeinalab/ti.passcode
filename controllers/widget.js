@@ -15,7 +15,7 @@ var ERR_WIDTH = 30;
 var ERR_TIME = 90;
 
 function setCode(c) {
-	c = c || '0000';
+	if (c == null) c = "0000";
 	promptMode = false;
 	code = c.split('');
 	codeLength = c.length;
@@ -150,4 +150,6 @@ Initial
 
 if (args.code != null) {
 	exports.setCode(args.code);
+} else if (args.promptMode != null) {
+	exports.setPromptMode(args.promptMode);
 }
