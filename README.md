@@ -16,27 +16,19 @@ gittio install com.caffeinalab.titanium.passcode
 
 #### Via Github
 
-```
-git clone git@github.com:CaffeinaLab/com.caffeinalab.titanium.passcode.git app/widgets/com.caffeinalab.titanium.passcode
-```
-
 Download the latest release, and add in your config.json, under dependencies:
 
-```
+```json
 "dependencies": {
     "com.caffeinalab.titanium.passcode": "*"
 }
 ```
 
-#### Usage
-
-In your Alloy view:
+#### Usage in Alloy Views
 
 ```xml
 <Widget id="PassCodeWidget" src="com.caffeinalab.titanium.passcode" code="42424" />
 ```
-
-In your controller:
 
 ```javascript
 
@@ -50,6 +42,31 @@ $.PassCodeWidget.setOnError(function(times) {
 		alert("Shame on you!");
 	}
 });
+```
+
+#### Usage in Controllers
+
+```javascript
+
+var $window = Ti.UI.createWindow({
+	backgroundColor: '#0000'
+});
+
+var $pc = Alloy.createWidget('com.caffeinalab.titanium.passcode', { code: "1234" });
+
+$pc.setOnSuccess(function() {
+	$window.close();
+	// Do the next private things
+});
+
+$pc.setOnError(function(times) {
+	if (times > 4) {
+		alert("Shame on you!");
+	}
+});
+
+$window.add($pc.getView());
+$window.open();
 ```
 
 ##### Prompt mode
