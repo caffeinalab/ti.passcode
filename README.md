@@ -4,7 +4,7 @@
 
 Alloy Titanium widget for an **identical** iPhone lock screen with passcode.
 
-![image](http://cl.ly/image/36262Q3v2X39/lalaal.gif)
+![image](http://cl.ly/image/3r2y2y1b3n3G/lock.gif)
 
 ## Installation
 
