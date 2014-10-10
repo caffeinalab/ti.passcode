@@ -73,12 +73,12 @@ $window.open();
 
 You can use the widget to prompt the user for a new code. Just call:
 
-`
+```javascript
 $.PassCodeWidget.setPromptMode(5);
 $.PassCodeWidget.setOnPromptSuccess(function(newCode) {
 	console.log("The new code is" + newCode);
 });
-`
+```
 
 This ask to the user for a new code of `5` chars.
 
