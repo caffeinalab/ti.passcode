@@ -1,7 +1,7 @@
 <Alloy>
 	<View id="mask">
 		<View id="inset">
-			<Label id="lbl" text="Insert code" />
+			<Label id="lbl" textid="insert_code" />
 			<View id="oks" />
 			<View id="btn_1" class="btn" n="1"><Label class="btn_lbl" text="1" /><Label class="btn_w" text="" /></View>
 			<View id="btn_2" class="btn" n="2"><Label class="btn_lbl" text="2" /><Label class="btn_w" text="A B C" /></View>
@@ -13,7 +13,7 @@
 			<View id="btn_8" class="btn" n="8"><Label class="btn_lbl" text="8" /><Label class="btn_w" text="T U V" /></View>
 			<View id="btn_9" class="btn" n="9"><Label class="btn_lbl" text="9" /><Label class="btn_w" text="W X Y Z" /></View>
 			<View id="btn_0" class="btn" n="0"><Label class="btn_lbl" text="0" top="14" /><Label class="btn_w" text="" /></View>
-			<Button title="Delete" id="dlBtn" />
+			<Button titleid="delete" id="dlBtn" />
 		</View>
 	</View>
 </Alloy>
