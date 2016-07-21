@@ -28,7 +28,8 @@ exports.setOnPromptSuccess = function(cb) {
 function setCode(c) {
 	promptMode = false;
 	code = c.toString().split('');
-	codeLength = c.length;
+	codeLength = code.length;
+	Ti.API.debug("Code Length", code, codeLength);
 }
 
 function setPromptMode(len) {
