@@ -29,7 +29,6 @@ function setCode(c) {
 	promptMode = false;
 	code = c.toString().split('');
 	codeLength = code.length;
-	Ti.API.debug("Code Length", code, codeLength);
 }
 
 function setPromptMode(len) {
